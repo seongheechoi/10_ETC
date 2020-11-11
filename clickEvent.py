@@ -18,7 +18,7 @@ def onclick(event):
     # really kill the text (but too boring for this example;-) )
     #event.artist.set_visible(False)
     # or really REALLY kill it with:
-    event.artist.remove()
+    #event.artist.remove()
     fig.canvas.draw()
 
 
