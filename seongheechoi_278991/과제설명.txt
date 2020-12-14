@@ -1,0 +1,48 @@
+A. 모델 데이터 설명
+  - 대상 : 아이리스(식물)
+  - 표본 개수 : 총 150개(3개 클래스 당 50개 표본)
+  - 속성 정보
+    a) sepal length in cm
+    b) sepal width in cm
+    c) petal length in cm
+    d) petal width in cm
+    e) class : 
+       -- Iris Setosa
+       -- Iris Versicolour
+       -- Iris Virginica
+  - Missing Attribute Values : 없음
+  - 통계량
+  	          Min  Max   Mean    SD   Class Correlation
+     sepal length: 4.3  7.9   5.84  0.83    0.7826   
+      sepal width: 2.0  4.4   3.05  0.43   -0.4194
+     petal length: 1.0  6.9   3.76  1.76    0.9490  (high!)
+      petal width: 0.1  2.5   1.20  0.76    0.9565  (high!)
+ 
+B. 은닉층 갯수와 노드 갯수를 정한 이유를 설명
+  - 은닉층 없을 경우 accuracy 0.947
+  - 은닉층 1개 
+     : 노드개수 2개 accuracy_train: 0.384, accuracy_test: 0.289
+     : 노드개수 3개 accuracy_train: 0.973, accuracy_test: 0.947
+     : 노드개수 4개 accuracy_train: 0.795, accuracy_test: 0.763
+     : 노드개수 5개 accuracy_train: 0.973, accuracy_test: 1
+     : 노드개수 6개 accuracy_train: 0.955, accuracy_test: 0.921
+     : 노드개수 7개 accuracy_train: 0.973, accuracy_test: 0.947
+     : 노드개수 8개 accuracy_train: 0.964, accuracy_test: 1.0
+     : 노드개수 9개 accuracy_train: 0.982, accuracy_test: 0.974
+     : 노드개수 10개 accuracy_train: 0.982, accuracy_test: 0.974
+     : 노드개수 11개 accuracy_train: 0.973, accuracy_test: 0.974
+     : 노드개수 12개 accuracy_train: 0.982, accuracy_test: 0.974
+     : 노드개수 15개 accuracy_train: 0.973, accuracy_test: 1.0
+
+  - 은닉층 1개로도 충분한 정확도를 얻을 수 있으며, 노드 개수는 10개 이상이면 학습데이터와 테스트데이터를 설명하는데 적합하다고 판단되며
+    cost 값(0.082)이 0.1 이하가 되는 노드가 15개 이므로 15개로 선정함. 예를 들어 20개 노드를 사용해도 cost값(0.092)이 더 낮아지지 않음, 과적합
+
+C. 모델의 은닉층과 출력층에서 사용한 활성화 함수(activation function)와 사용한 이유 설명
+  - 은닉층에서는 sigmoid함수를 활성화 함수로 사용하였으며, 은닉층이 1개라 backpropagation에 의한 그레이언트 베니싱 문제는 없을 것으로 판단됨
+  - 출력층에서는 softmax 함수를 활성화 함수로 사용하였으며, 다중분류 문제에서 확률적 해석이 가능하게 하여 통계적인 대응 가능
+ 
+D. 오차 함수(error function) 선택 이유 설명
+  - 오차함수로는 크로스 앤트로피 오차 함수를 사용하였으며, 소프트맥스를 활성화 함수로 사용한 경우에 오차함수로 사용함
+
+E. 선택한 옵티마이져에 대해 설명
+  - 경사하강법을 사용한 옵티마이져 사용  : 미분을 통한 최저의 비용을 향해 진행하도록 만든 함수
